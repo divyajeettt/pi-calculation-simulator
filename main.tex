@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+
+\newcommand{\bluelink}[2]{{\color{blue}\underline{\href{#1}{#2}}}}
+
+\geometry{a4paper, left=30mm, right=30mm, top=30mm}
+
+\title{Working of pi-calculation-simulator}
+\author{Divyajeet Singh}
+\date{August 28, 2022}
+
+\begin{document}
+\maketitle
+
+\section*{Preface}
+This document was written after creation of the repository
+\bluelink{https://github.com/divyajeettt/pi-calculation-simulator}{pi-calculation-simulator},
+only to provide a better experience to readers wishing
+to go through the proof of why the $\pi$-calculation algorithm is correct.
+
+\section*{Set-Up}
+
+A square $S$ of side $s$ appears on the screen. A circle $C$ of diameter $d$ is inscribed in $S$.
+This ensures that side $s$ of square $S$ is exactly equal to diameter $d$ of circle $C$, i.e.
+
+\begin{equation}\label{equality} s = d\end{equation}
+
+\noindent Pairs $(x, y)$ are drawn randomly from a uniform distribution to place darts at.
+
+\section*{Explanation}
+
+The following section contains the explanation of why the algorithm works. \\
+
+Let $N_t$ be the total number of darts to be thrown at $S$.
+
+Let $N_0$ be the number of darts that land inside $C$.
+
+We find that the ratio
+
+\begin{equation}
+    \frac{N_0}{N_t} \varpropto \frac{\text{Area}(C)}{\text{Area}(S)}
+\end{equation}
+
+Note that (using (\ref{equality})),
+
+\begin{equation}\begin{split}
+    \label{area}
+    \frac{\text{Area}(C)}{\text{Area}(S)} &= \frac{\pi d^2}{4} \cdot \frac{1}{s^2} \\
+    &= \frac{\pi d^2}{4} \cdot \frac{1}{d^2}\ = \frac{\pi}{4}
+\end{split}\end{equation}
+
+Note how for larger $N_t$, the following holds true, on account of covering larger area (using (\ref{area})):
+
+\begin{equation}
+    \label{limit}
+    \lim_{N_t \to \infty} \left( \frac{N_0}{N_t} \right) = \frac{\text{Area}(C)}{\text{Area}(S)} = \frac{\pi}{4}
+\end{equation}
+
+This is the reason that $N_t > 1,000$ is suggested by the application. On rearranging (\ref{limit}),
+
+\begin{equation}
+    \label{result}
+    \lim_{N_t \to \infty} 4 \cdot \left( \frac{N_0}{N_t} \right) = \pi
+\end{equation}
+
+Hence the aforementioned (result (\ref{result}))  is a close (convergent) approximation of $\pi$ for large $N_t$.
+
+\section*{Footnotes}
+This algorithm cannot be guaranteed to work. This can be attributed to the fact that each location $(x,y)$ is
+chosen randomly, where $x$ and $y$ are chosen randomly from uniform distributions. In the event (of minuscule
+probability) that most/all points lie outside/inside $C$, the algorithm is bound to fail.
+
+\noindent Hence, it must only be looked at as an approximation.
+
+\section*{References}
+\begin{enumerate}
+    \item \bluelink{https://www.youtube.com/watch?v=M34TO71SKGk}{Calculating Pi with Darts (YouTube)}
+    \item \bluelink{https://www.cs.wustl.edu/~cytron/cs101/Lectures/5.html}{Computing PI by throwing darts}
+\end{enumerate}
+
+\end{document}
