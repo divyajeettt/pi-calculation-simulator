@@ -2,7 +2,7 @@
 
 # About pi-calculation-simulator
 
-pi-calculation-simulator is a simple project containing different simulations of calculating the mathematical constant [pi](https://en.wikipedia.org/wiki/Pi), which is built using [`pygame`](https://www.pygame.org/docs/) in Python. It is a graphical-user interface based project. 
+pi-calculation-simulator is a simple project containing different simulations of calculating the mathematical constant **[pi](https://en.wikipedia.org/wiki/Pi)**, which is built using [`pygame`](https://www.pygame.org/docs/) in Python. It is a graphical-user interface based project. 
 
 *Date of creation:* `07 August, 2021`
 
